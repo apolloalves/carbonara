@@ -1,0 +1,62 @@
+######################################################################
+#                                                                    #
+# Script  : SA-JX2-GOSOCKET-LOGS.ps1                                 #
+# Date    : 24/05/2024                                               #
+# Author  : Douglas Alves                                            #
+# Purpose : Sorts log files according to modification date           #
+#                                                                    #
+######################################################################
+
+Clear-Host
+
+# Lista de caminhos de origem e seus respectivos destinos
+$paths = @(
+    @{ Source = 'D:\PowerShell\Scripts\CHECK_SVC\LOGS'; Destination = 'D:\PowerShell\Scripts\CHECK_SVC\LOGS' },
+    @{ Source = 'D:\PowerShell\Scripts\RELOAD_XDOC_SERVICES\LOGS'; Destination = 'D:\PowerShell\Scripts\RELOAD_XDOC_SERVICES\LOGS' }
+)
+
+# Processar cada par de origem/destino
+foreach ($path in $paths) {
+    $sourcePath = $path.Source
+    $destinationBasePath = $path.Destination
+
+    if (-not (Test-Path -Path $sourcePath)) {
+        Write-Host "`nDiretório de origem não encontrado: $sourcePath`n"
+        continue  # Pula para o próximo diretório se o atual não existir
+    }
+
+    Write-Host "`nProcessando arquivos em: $sourcePath`n"
+
+    $files = Get-ChildItem -Path $sourcePath -File
+
+    foreach ($file in $files) {
+
+        $fileDate = $file.LastWriteTime
+        $year = $fileDate.ToString("yyyy")
+        $monthNumber = $fileDate.ToString("MM")
+        $monthName = $fileDate.ToString("MMMM")
+
+        $monthFolderName = "$monthNumber-$monthName"
+        $destinationPath = "$destinationBasePath\$year\$monthFolderName"
+
+        # Criar diretório de destino, se não existir
+        if (-not (Test-Path -Path $destinationPath)) {
+            New-Item -ItemType Directory -Path $destinationPath -Force
+        }
+
+        $destinationFile = "$destinationPath\$($file.Name)"
+
+        # Se o arquivo já existir no destino, apenas anexa o conteúdo
+        if (Test-Path -Path $destinationFile) {
+            Add-Content -Path $destinationFile -Value (Get-Content -Path $file.FullName)
+            Write-Host "Conteúdo do arquivo '$($file.Name)' adicionado ao arquivo de destino."
+
+            Remove-Item -Path $file.FullName  # Remove o arquivo original
+        } else {
+            Move-Item -Path $file.FullName -Destination $destinationPath
+            Write-Host "Arquivo '$($file.Name)' movido para o destino."
+        }
+    }
+}
+
+Write-Output "`nLogs organizados com sucesso!`n"

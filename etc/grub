@@ -4,7 +4,8 @@ GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="Arch"
 #GRUB_CMDLINE_LINUX_DEFAULT="quiet nomodeset"
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 nomodeset nvidia-drm.modeset=1 nohz=on isolcpus=0,1,2,3 rcu_nocbs=0,1,2,3 elevator=bfq bluetooth.disable=1 zswap.enabled=1 acpi=noirq"
+#GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 nomodeset nvidia-drm.modeset=1 nohz=on isolcpus=0,1,2,3 rcu_nocbs=0,1,2,3 elevator=bfq zswap.enabled=1 acpi=noirq"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 nvidia-drm.modeset=1 nohz=on isolcpus=0,1,2,3 rcpu_nocbs=0,1,2,3 elevator=bfq zswap.enabled=1"
 
 GRUB_CMDLINE_LINUX=""
 

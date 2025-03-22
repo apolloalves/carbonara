@@ -56,16 +56,16 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
            carbo__DisableServices.sh
            ;;
         4)
-           carbo__PipewireStartServices.sh
+
            ;;
  	5)
-           carbo__PipewireStateAllServices.sh
+
            ;;
 	6)
-           carbo__PipewireRestartAllServices.sh
+
            ;;
         7)
-           carbo__RestartGDMService.sh
+
            ;;
 
         *)

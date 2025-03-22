@@ -5,7 +5,7 @@
 # Author: Apollo Alves                                                                       #
 # Date  : 21/11/2024                                                                         #
 #                									     #
-# Description : This bash code creates a LINE_SCRIPT containing 90 trace characters (─) and  #
+# Description : This bash code creates a LINE_SCRIPT containing 96 trace characters (─) and  #
 # prints this LINE_SCRIPT on    							     #
 # the console.                                                                               #
 # Here is a step by step description of what the code does:                                  #
