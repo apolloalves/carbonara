@@ -12,8 +12,8 @@ source 'carbo__verifyRoot.sh'
 
 MENU='/bin/carbonara.sh'
 DESTINO="/mnt/MDSATA"
-DEST_ROOT="$DESTINO/ROOT_BACKUP"
-DEST_HOME="$DESTINO/HOME_BACKUP"
+DEST_BAK="$DESTINO/ESSENCIALS"
+
 
 clear
 
@@ -37,38 +37,37 @@ progresso() {
     done
 }
 
-### BACKUP DA ROOT (/)
-echo -e "\n\033[1;33mEXECUTING BACKUP OF ROOT FOLDER\033[0m"
+### BACKUP  (/)
+echo -e "\n\033[1;33mEXECUTING BACKUP FILES ESSENCIALS FOLDER\033[0m"
 progresso & LOOP_PID=$!
 
-rsync -aAXHh --delete --progress \
-    --exclude={"/proc/*","/sys/*","/dev/*","/tmp/*","/run/*","/lost+found","/home/*","$DEST_ROOT/*","$DEST_HOME/*"} \
-    / "$DEST_ROOT/" >> /var/log/root_backup.log
+rsync -aAXHh --progress \
+    --relative \
+    /boot/grub/grub.cfg \
+    "/home/apollo/.bashrc" \
+    "/home/apollo/.bash_profile" \
+    /etc/fstab \
+    /etc/pacman.conf \
+    /etc/pacman.d/mirrorlist \
+    /etc/default/grub \
+    /etc/mkinitcpio.conf \
+    /etc/pipewire/ \
+    "/home/apollo/.config/pipewire/" \
+    "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log
 
+    
 kill $LOOP_PID
-echo -e "\n\033[1;32mBackup folder root completed...\033[0m\n"
-
-### BACKUP DA HOME (/home)
-#echo -e "\n\033[1;33mStarting backup of /home folder...\033[0m\n"
-#progresso & LOOP_PID=$!
-
-#rsync -aAXHh --delete --progress \
-#    --exclude={".local/share/Trash/*","apollo/.local/share/Trash/*","eggs/","node_modules/","package.json","package-lock.json","lost+found"} \
-#    /home/ "$DEST_HOME/" >> /var/log/home_backup.log
-
-#kill $LOOP_PID
-#echo -e "\n\033[1;32mBackup folder home completed...\033[0m\n"
+echo -e "\n\033[1;32mBackup files essencilas completed...\033[0m\n"
 
 # Exibe os logs
 echo -e "\nOpening logs...\n"
 sleep 2
-#sudo kgx --tab -e "cat /var/log/home_backup.log" >/dev/null 2>&1
-sudo kgx --tab -e "cat /var/log/root_backup.log" >/dev/null 2>&1
+sudo kgx --tab -e "cat /var/log/backupEssencials.log" >/dev/null 2>&1
+#sudo kgx --tab -e "cat /var/log/backupEssencials.log" >/dev/null 2>&1
 
 clear
 echo -e "\033[1;32;5mBackup Completed Successfully!\033[0m"
-echo "Returning to the menu.."
-sleep 5
 
-$MENU
+
+
 
