@@ -4,70 +4,72 @@
 # Script: carbo__BackupPersonal.sh                                                    #
 # Author: Apollo Alves                                                                #
 # Date  : 21/11/2024                                                                  #
-# Description: Executes rsync backups for folders: / and /home with logs.            #
+# Description: Executes rsync backups for essential system/user files with logs.     #
 #######################################################################################
 
-# Verifica se o script está sendo executado como root
 source 'carbo__verifyRoot.sh'
 
 MENU='/bin/carbonara.sh'
 DESTINO="/mnt/MDSATA"
-DEST_BAK="$DESTINO/ESSENCIALS"
-
+DESTINOSECOND="/mnt/BACK_EMERGENCY"
+DEST_BAK1="$DESTINO/ESSENCIALS"
+DEST_BAK2="$DESTINOSECOND/bak"
 
 clear
 
-# Verifica se o SSD de destino está montado
-if ! mountpoint -q "$DESTINO"; then
-    echo -e "\n\033[1;31mErro: O destino $DESTINO não está montado!\033[0m"
-    exit 1
-fi
+# Verifica se os destinos estão montados
+for DEST in "$DESTINO" "$DESTINOSECOND"; do
+    if ! mountpoint -q "$DEST"; then
+        echo -e "\n\033[1;31mErro: O destino $DEST não está montado!\033[0m"
+        exit 1
+    fi
+done
 
-# Função para exibir barra de progresso em background
-progresso() {
-    while true; do
-        for i in {0..100}; do
-            echo -ne "\rProgress: $i% ["
-            for ((j=0; j<i/2; j++)); do echo -n "="; done
-            for ((j=i/2; j<50; j++)); do echo -n " "; done
-            echo -n "]"
-            sleep 0.1
-        done
-        break
+# Função spinner sincronizado com o processo
+spinner() {
+    local pid=$1
+    local delay=0.3
+    local spinstr='|/-\'
+    while kill -0 "$pid" 2>/dev/null; do
+        local temp=${spinstr#?}
+        printf " [%c]  \r" "$spinstr"
+        spinstr=$temp${spinstr%"$temp"}
+        sleep $delay
     done
 }
 
-### BACKUP  (/)
+### BACKUP ESSENCIAL
 echo -e "\n\033[1;33mEXECUTING BACKUP FILES ESSENCIALS FOLDER\033[0m"
-progresso & LOOP_PID=$!
 
-rsync -aAXHh --progress \
-    --relative \
-    /boot/grub/grub.cfg \
-    "/home/apollo/.bashrc" \
-    "/home/apollo/.bash_profile" \
-    /etc/fstab \
-    /etc/pacman.conf \
-    /etc/pacman.d/mirrorlist \
-    /etc/default/grub \
-    /etc/mkinitcpio.conf \
-    /etc/pipewire/ \
-    "/home/apollo/.config/pipewire/" \
-    "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log
+backup_files=(
+    /boot/grub/grub.cfg
+    "/home/apollo/.bashrc"
+    "/home/apollo/.bash_profile"
+    /etc/fstab
+    /etc/pacman.conf
+    /etc/pacman.d/mirrorlist
+    /etc/default/grub
+    /etc/mkinitcpio.conf
+    /etc/pipewire/pipewire.conf
+    /etc/pipewire/pipewire-pulse.conf
+    /etc/pipewire/media-session.d/*
+    /home/apollo/.config/pipewire/pipewire.conf
+    /home/apollo/.config/pipewire/pipewire-pulse.conf
+)
 
-    
-kill $LOOP_PID
-echo -e "\n\033[1;32mBackup files essencilas completed...\033[0m\n"
+for DEST_BAK in "$DEST_BAK1" "$DEST_BAK2"; do
+    echo -e "\n\033[1;36mBackup para $DEST_BAK\033[0m"
+    rsync -aAXHh "${backup_files[@]}" "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log &
+    RSYNC_PID=$!
+    spinner $RSYNC_PID
+    wait $RSYNC_PID
+done
 
-# Exibe os logs
-echo -e "\nOpening logs...\n"
+echo -e "\n\033[1;32mBackup files essenciais concluído para ambos os destinos.\033[0m\n"
+
+echo -e "\nAbrindo logs...\n"
 sleep 2
 sudo kgx --tab -e "cat /var/log/backupEssencials.log" >/dev/null 2>&1
-#sudo kgx --tab -e "cat /var/log/backupEssencials.log" >/dev/null 2>&1
 
 clear
 echo -e "\033[1;32;5mBackup Completed Successfully!\033[0m"
-
-
-
-
