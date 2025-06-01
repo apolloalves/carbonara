@@ -8,19 +8,21 @@ UUID=CB58-6ACE /boot vfat rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharse
 
 
 # /dev/md127p2
-UUID=db0901c3-b246-405b-8d44-a9bd4f85f5f1	/	ext4 rw,noatime,commit=60 0 1
+UUID=db0901c3-b246-405b-8d44-a9bd4f85f5f1	/	ext4 rw,noatime,commit=60 0 0
 
 # /dev/md127p3
-UUID=7ebb98f0-8663-4712-af2a-d8bc8ee4491a	/home	ext4 rw,noatime,commit=60,data=writeback 0 2
+UUID=7ebb98f0-8663-4712-af2a-d8bc8ee4491a	/home	ext4 rw,noatime,commit=60,data=writeback 0 0
+
+
+# EMERGENCY
+UUID=b5b94e5f-6c32-4247-b049-f4a37fbbe43b /mnt/BACK_EMERGENCY ext4 defaults,noatime,nofail 0 0
 
 # VENTOY
-UUID=3567-0BE3 /mnt/VENTOY exfat defaults,noatime,nofail 0 0 
+UUID=E626-528A /mnt/VENTOY exfat defaults,noatime,nofail 0 0 
 
-# MDSATA 
-UUID=d6680c1e-7c6c-4eb1-82d4-5acd942301e9 /mnt/MDSATA ext4 defaults,noatime,nofail 0 2
+# MDASATA 
+UUID=82770cba-e03a-4dc7-817f-26a408836239 /mnt/MDSATA ext4 defaults,noatime,nofail 0 0
 
-# Swap
-/swapfile none swap sw 0 0
 
 # tmpfs para diretórios temporários
 #tmpfs /tmp tmpfs noexec,nosuid,nodev,noatime,mode=1777,size=1G 0 0

@@ -10,20 +10,11 @@
 source 'carbo__verifyRoot.sh'
 
 MENU='/bin/carbonara.sh'
-DESTINO="/mnt/MDSATA"
-DESTINOSECOND="/mnt/BACK_EMERGENCY"
-DEST_BAK1="$DESTINO/ESSENCIALS"
-DEST_BAK2="$DESTINOSECOND/bak"
+DESTINOROOT="/bak"
+DESTINOEMERGENCY="/mnt/BACK_EMERGENCY/bak"
+
 
 clear
-
-# Verifica se os destinos estão montados
-for DEST in "$DESTINO" "$DESTINOSECOND"; do
-    if ! mountpoint -q "$DEST"; then
-        echo -e "\n\033[1;31mErro: O destino $DEST não está montado!\033[0m"
-        exit 1
-    fi
-done
 
 # Função spinner sincronizado com o processo
 spinner() {
@@ -57,7 +48,7 @@ backup_files=(
     /home/apollo/.config/pipewire/pipewire-pulse.conf
 )
 
-for DEST_BAK in "$DEST_BAK1" "$DEST_BAK2"; do
+for DEST_BAK in "$DESTINOROOT" "$DESTINOEMERGENCY"; do
     echo -e "\n\033[1;36mBackup para $DEST_BAK\033[0m"
     rsync -aAXHh "${backup_files[@]}" "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log &
     RSYNC_PID=$!
