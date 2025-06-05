@@ -4,11 +4,7 @@
 # Script: carbo__BackupPersonal.sh                                                    #
 # Author: Apollo Alves                                                                #
 # Date  : 21/11/2024                                                                  #
-<<<<<<< HEAD
-# Description: Executes rsync backups for essential system/user files with logs.     #
-=======
-# Description: Executes rsync backups for folders: / and /home with logs.             #
->>>>>>> 307a3ef (New script to backup essencials)
+# Description: Executes rsync backups for essential system/user files with logs.      #
 #######################################################################################
 
 source 'carbo__verifyRoot.sh'
