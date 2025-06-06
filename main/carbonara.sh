@@ -33,35 +33,35 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
         case "$option_choice" in
 
         1)
-            carbo__CleanPacman.sh
+            carbo__ArchDeepClean.sh
             ;;
         2)
-            carbo__BackupWizard.sh
+            carbo__ArchCheckup.sh
             ;;
         3)
-            carbo__EggsWizard.sh
+            carbo__ArchBackupWizard.sh
             ;;
 	4)
-            carbo__ServicesWizard.sh
+            
             ;;
-        5)
-            carbo__PerformanceWizard.sh
+        5)s
+            
             ;;
 	6)
-            carbo__SystemAnalyse.sh
+            
             ;;
 	7)
-	    carbo__ShowJournalctl.sh
+	    
             ;;
         8)
-            carbo__DisabledListServices.sh
+            
             ;;
         9)
-            carbo__ReportSystem.sh
+            
             ;;
         10)
-           carbo__ServicesWizard.sh
-           ;;
+           
+            ;;
         11)
             
             ;;

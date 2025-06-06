@@ -24,7 +24,7 @@ BACKCLONRAID='/bin/carbo__ClonraidBackups.sh'
 BACKRESTORE='/bin/carbo__RestoreEssencials.sh'
 CHECKSPACE='/bin/carbo__CheckSpace.sh'
 
-BACKUPMENU='/bin/carbo__BackupWizard.sh'
+BACKUPMENU='/bin/carbo__ArchBackupWizard.sh'
 
 LINE_SCRIPT='carbo__LineScript.sh'
 echo -e "\033[1;97;100m               Carbonara           \033[0m\033[1;30;107m        Apollo Alves        \033[1;97;100m        Backup Wizard Wizard       \033[0m"
