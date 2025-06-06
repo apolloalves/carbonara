@@ -38,7 +38,7 @@ print_status() {
 LINE_SCRIPT='carbo__LineScript.sh'
 echo -e "\n\033[01;33mChecking spaces...\033[0m\n"
 sleep 2
-df -h /dev/md127p1 && echo "" && df -h /dev/md127p2 && echo "" && df -h /dev/sdd1 && echo "" && df -h /dev/sdd3
+df -h /dev/md127p1;echo;df -h /dev/md127p2;echo;df -h /dev/md127p3;echo;df -h /dev/sdc3;echo;df -h /dev/sdd1;echo;df -h /dev/sdd3;echo
 echo ""
 $LINE_SCRIPT
 echo 
