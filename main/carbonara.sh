@@ -36,10 +36,10 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             carbo__EggsWizard.sh
             ;;
         2)
-            carbo__BackupEssencials.sh
+           
             ;;
         3)
-            carbo__ClonraidBackups.sh
+            
             ;;
 	4)
             carbo__CheckSpace.sh
