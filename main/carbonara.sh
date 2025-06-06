@@ -3,7 +3,7 @@
 # Carbonara                                                                    #
 # Script: carbonara.sh                                                         #
 # Author: Apollo Alves                                                         #
-# Date  : 21/11/2024                                                           #
+# Date  : 06/06/2025                                                           #
 #									       #
 # Description: Multifunctional tool designed to simplify and automate          #
 # administration tasks on Linux.                                               #
@@ -41,34 +41,9 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
         3)
             carbo__ArchBackupWizard.sh
             ;;
-	4)
-            
-            ;;
-        5)s
-            
-            ;;
-	6)
-            
-            ;;
-	7)
-	    
-            ;;
-        8)
-            
-            ;;
-        9)
-            
-            ;;
-        10)
-           
-            ;;
-        11)
-            
-            ;;
-
-        12)
-            carbo__RebootSystem.sh
-            ;;
+	
+	4)  carbo__EggsWizard.sh
+	    ;;
         *)
             echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
             sleep 2

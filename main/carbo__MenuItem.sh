@@ -3,7 +3,7 @@
 # Carbonara                                                                                 #
 # Script: carbo__MenuItem.sh                                                                #
 # Author: Apollo Alves                                                                      #
-# Date  : 21/11/2024                                                      		    #
+# Date  : 06/06/2025                                                      		    #
 # 											    #
 # Description:                                                                              #
 # This bash script provides a menu with various system-related options for easy management. #
@@ -21,14 +21,15 @@ echo -e "\033[01;97m Enter a menu option: \033[0m"
 $LINE
 echo
 echo -e "\033[1;36m[\033[0m 01\033[1;36m ]\033[0m Arch Deep Clean"
-echo -e "\033[1;36m[\033[0m 01\033[1;36m ]\033[0m Arch Check up"
-echo -e "\033[1;36m[\033[0m 02\033[1;36m ]\033[0m Backup Wizard"
-echo -e "\033[1;36m[\033[0m 06\033[1;36m ]\033[0m Boot messages wizard ( journalctl -b )"
-echo -e "\033[1;36m[\033[0m 03\033[1;36m ]\033[0m Penguin's Eggs Wizard"
-echo -e "\033[1;36m[\033[0m 04\033[1;36m ]\033[0m Services Wizard"
-echo -e "\033[1;36m[\033[0m 03\033[1;36m ]\033[0m Search for updated packages by date"
-echo -e "\033[1;36m[\033[0m 08\033[1;36m ]\033[0m Report"
-echo -e "\033[1;36m[\033[0m 10\033[1;36m ]\033[0m Soft Reboot System"
+echo -e "\033[1;36m[\033[0m 02\033[1;36m ]\033[0m Arch Check up"
+echo -e "\033[1;36m[\033[0m 03\033[1;36m ]\033[0m Backup Wizard"
+echo -e "\033[1;36m[\033[0m 04\033[1;36m ]\033[0m Penguin's Eggs Wizard"
+
+#echo -e "\033[1;36m[\033[0m 06\033[1;36m ]\033[0m Boot messages wizard ( journalctl -b )"
+#echo -e "\033[1;36m[\033[0m 04\033[1;36m ]\033[0m Services Wizard"
+#echo -e "\033[1;36m[\033[0m 03\033[1;36m ]\033[0m Search for updated packages by date"
+#echo -e "\033[1;36m[\033[0m 08\033[1;36m ]\033[0m Report"
+#echo -e "\033[1;36m[\033[0m 10\033[1;36m ]\033[0m Soft Reboot System"
 echo -e "\033[1;36m[\033[0m E\033[1;36m  ]\033[0m EXIT\n"
 
 

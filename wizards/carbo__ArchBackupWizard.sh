@@ -27,21 +27,22 @@ CHECKSPACE='/bin/carbo__CheckSpace.sh'
 BACKUPMENU='/bin/carbo__ArchBackupWizard.sh'
 
 LINE_SCRIPT='carbo__LineScript.sh'
-echo -e "\033[1;97;100m               Carbonara           \033[0m\033[1;30;107m        Apollo Alves        \033[1;97;100m        Backup Wizard Wizard       \033[0m"
+echo -e "\033[1;97;100m               Carbonara           \033[0m\033[1;30;107m        Apollo Alves        \033[1;97;44m          Backup Wizard     \033[0m"
 
 echo
 echo -e "\033[01;97m Input an option from the menu: \033[0m"
 $LINE_SCRIPT
 echo
-echo -e "\033[01;32m[\033[01;37m 1\033[01;32m ]\033[00;37m - Create Backup Essecials\033m"
-echo -e "\033[01;32m[\033[01;37m 2\033[01;32m ]\033[00;37m - Create Backup Personal\033m"
-echo -e "\033[01;32m[\033[01;37m 3\033[01;32m ]\033[00;37m - Check Backup Integrity\033m"
-echo -e "\033[01;32m[\033[01;37m 4\033[01;32m ]\033[00;37m - Check Clonraid Backups\033m"
-echo -e "\033[01;32m[\033[01;37m 5\033[01;32m ]\033[00;37m - Restore Essential Backups\033m"
-echo -e "\033[01;32m[\033[01;37m 4\033[01;32m ]\033[00;37m - Check Space Disks\033m"
+
+echo -e "\033[1;34m[\033[01;37m 1\033[01;34m ]\033[00;37m - Create Backup Essecials\033m"
+echo -e "\033[1;34m[\033[01;37m 2\033[01;34m ]\033[00;37m - Create Backup Personal\033m"
+echo -e "\033[1;34m[\033[01;37m 3\033[01;34m ]\033[00;37m - Check Backup Integrity\033m"
+echo -e "\033[1;34m[\033[01;37m 4\033[01;34m ]\033[00;37m - Check Clonraid Backups\033m"
+echo -e "\033[1;34m[\033[01;37m 5\033[01;34m ]\033[00;37m - Restore Essential Backups\033m"
+echo -e "\033[1;34m[\033[01;37m 6\033[01;34m ]\033[00;37m - Check Space Disks\033m"
 
 
-echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
+echo -e "\033[1;34m[\033[01;37m E\033[01;34m ]\033[00;37m - Exit\033m"
 echo
 $LINE_SCRIPT
 formatted_prompt=$(printf "\e[1;97mInput option :\e[0m ")

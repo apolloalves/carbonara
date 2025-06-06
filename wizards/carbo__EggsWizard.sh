@@ -25,18 +25,18 @@ MANAGER='/bin/carbo__BackupManager.sh'
 EGGSMENU='/bin/carbo__EggsWizard.sh'
 
 LINE_SCRIPT='carbo__LineScript.sh'
-echo -e "\033[1;97;100m               carbonara            \033[0m\033[1;30;107m        Apollo Alves        \033[1;97;100m        Penguin's Eggs Wizard       \033[0m"
+echo -e "\033[1;97;100m               carbonara            \033[0m\033[1;30;107m        Apollo Alves        \033[1;97;44m         Penguin's Eggs Wizard       \033[0m"
 
 echo
 echo -e "\033[01;97m Input an option from the menu: \033[0m"
 $LINE_SCRIPT
 echo
-echo -e "\033[01;32m[\033[01;37m 1\033[01;32m ]\033[00;37m - Create Penguin's Eggs\033m"
-echo -e "\033[01;32m[\033[01;37m 2\033[01;32m ]\033[00;37m - Check Penguin's Eggs .iso\033m"
-echo -e "\033[01;32m[\033[01;37m 3\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - broot file manager\033m"
-echo -e "\033[01;32m[\033[01;37m 4\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - Nautilus file manager\033m"
-echo -e "\033[01;32m[\033[01;37m 5\033[01;32m ]\033[00;37m - Penguin's Eggs and Calamares Install \033m"
-echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
+echo -e "\033[1;34m[\033[01;37m 1\033[01;34m ]\033[00;37m - Create Penguin's Eggs\033m"
+echo -e "\033[1;34m[\033[01;37m 2\033[01;34m ]\033[00;37m - Check Penguin's Eggs .iso\033m"
+echo -e "\033[1;34m[\033[01;37m 3\033[01;34m ]\033[00;37m - Open my Penguin's Eggs Files - broot file manager\033m"
+echo -e "\033[1;34m[\033[01;37m 4\033[01;34m ]\033[00;37m - Open my Penguin's Eggs Files - Nautilus file manager\033m"
+echo -e "\033[1;34m[\033[01;37m 5\033[01;34m ]\033[00;37m - Penguin's Eggs and Calamares Install \033m"
+echo -e "\033[1;34m[\033[01;37m E\033[01;34m ]\033[00;37m - Exit\033m"
 echo
 $LINE_SCRIPT
 formatted_prompt=$(printf "\e[1;97mInput option :\e[0m ")
