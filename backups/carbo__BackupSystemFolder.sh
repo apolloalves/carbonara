@@ -49,20 +49,20 @@ kill $LOOP_PID
 echo -e "\n\033[1;32mBackup folder root completed...\033[0m\n"
 
 ### BACKUP DA HOME (/home)
-#echo -e "\n\033[1;33mStarting backup of /home folder...\033[0m\n"
-#progresso & LOOP_PID=$!
+echo -e "\n\033[1;33mStarting backup of /home folder...\033[0m\n"
+progresso & LOOP_PID=$!
 
-#rsync -aAXHh --delete --progress \
-#    --exclude={".local/share/Trash/*","apollo/.local/share/Trash/*","eggs/","node_modules/","package.json","package-lock.json","lost+found"} \
-#    /home/ "$DEST_HOME/" >> /var/log/home_backup.log
+rsync -aAXHh --delete --progress \
+    --exclude={".local/share/Trash/*","apollo/.local/share/Trash/*","eggs/","node_modules/","package.json","package-lock.json","lost+found"} \
+   /home/ "$DEST_HOME/" >> /var/log/home_backup.log
 
-#kill $LOOP_PID
-#echo -e "\n\033[1;32mBackup folder home completed...\033[0m\n"
+kill $LOOP_PID
+echo -e "\n\033[1;32mBackup folder home completed...\033[0m\n"
 
 # Exibe os logs
 echo -e "\nOpening logs...\n"
 sleep 2
-#sudo kgx --tab -e "cat /var/log/home_backup.log" >/dev/null 2>&1
+sudo kgx --tab -e "cat /var/log/home_backup.log" >/dev/null 2>&1
 sudo kgx --tab -e "cat /var/log/root_backup.log" >/dev/null 2>&1
 
 clear

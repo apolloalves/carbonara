@@ -18,7 +18,7 @@ source 'carbo__verifyRoot.sh'
 clear
 MENU='/bin/carbonara.sh'
 BACKESSENCIAL='/bin/carbo__BackupEssencials.sh'
-BACKPERSONAL='/bin/carbo__BackupPersonal.sh'
+BACKSYSTEMFOLDER='/bin/carbo__BackupSystemFolder.sh'
 BACKTESTINTEGRITY='/bin/carbo__BackupTestIntegrity.sh'
 BACKCLONRAID='/bin/carbo__ClonraidBackups.sh'
 BACKRESTORE='/bin/carbo__RestoreEssencials.sh'
@@ -61,7 +61,7 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             $BACKESSENCIAL
             ;;
         2)
-            $BACKPERSONAL
+            $ACKSYSTEMFOLDER
             ;;
         3)
             $BACKTESTINTEGRITY
