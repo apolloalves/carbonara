@@ -22,12 +22,6 @@ echo -e "\033[01;97m Input an option from the menu: \033[0m"
 $LINE_SCRIPT
 echo
 echo -e "\033[01;32m[\033[01;37m 01\033[01;32m ]\033[00;37m - View Services Disabled\033m"
-echo -e "\033[01;32m[\033[01;37m 02\033[01;32m ]\033[00;37m - Enable Services of System\033m"
-echo -e "\033[01;32m[\033[01;37m 03\033[01;32m ]\033[00;37m - Disabled Services of System\033m"
-echo -e "\033[01;32m[\033[01;37m 04\033[01;32m ]\033[00;37m - Start Pipewire All Services\033m"
-echo -e "\033[01;32m[\033[01;37m 05\033[01;32m ]\033[00;37m - View Pipewire State All Services Pipewire\033m"
-echo -e "\033[01;32m[\033[01;37m 06\033[01;32m ]\033[00;37m - Restart Pipewire All Services Pipewire\033m"
-echo -e "\033[01;32m[\033[01;37m 07\033[01;32m ]\033[00;37m - Restart GDM Service\033m"
 echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m  - Exit\033m"
 echo
 $LINE_SCRIPT
@@ -47,26 +41,7 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 
         1)
            carbo__DisabledListServices.sh
-	   ;;
-
-        2)
-           carbo__EnableServices.sh
-           ;;
-        3)
-           carbo__DisableServices.sh
-           ;;
-        4)
-
-           ;;
- 	5)
-
-           ;;
-	6)
-
-           ;;
-        7)
-
-           ;;
+	   ;;         
 
         *)
             echo -e "\nInvalid input! Please enter the number contained in the menu!.\n"
