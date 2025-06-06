@@ -33,16 +33,16 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
         case "$option_choice" in
 
         1)
-            carbo__EggsWizard.sh
+            carbo__CleanPacman.sh
             ;;
         2)
-           
+            carbo__BackupWizard.sh
             ;;
         3)
-            
+            carbo__EggsWizard.sh
             ;;
 	4)
-            carbo__CheckSpace.sh
+            carbo__ServicesWizard.sh
             ;;
         5)
             carbo__PerformanceWizard.sh
@@ -63,7 +63,7 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
            carbo__ServicesWizard.sh
            ;;
         11)
-            carbo__RubbishBin.sh
+            
             ;;
 
         12)
