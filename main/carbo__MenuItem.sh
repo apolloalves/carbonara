@@ -20,8 +20,8 @@ $LINE
 echo -e "\033[01;97m Enter a menu option: \033[0m"
 $LINE
 echo
-echo -e "\033[1;36m[\033[0m 1\033[1;36m ]\033[0m Arch Deep Clean"
-echo -e "\033[1;36m[\033[0m 2\033[1;36m ]\033[0m Arch Check up"
+echo -e "\033[1;36m[\033[0m 1\033[1;36m ]\033[0m Arch Check up"
+echo -e "\033[1;36m[\033[0m 2\033[1;36m ]\033[0m Arch Deep Clean"
 echo -e "\033[1;36m[\033[0m 3\033[1;36m ]\033[0m Backup Wizard"
 echo -e "\033[1;36m[\033[0m 4\033[1;36m ]\033[0m Penguin's Eggs Wizard"
 echo -e "\033[1;36m[\033[0m 5\033[1;36m ]\033[0m Services Wizard"
