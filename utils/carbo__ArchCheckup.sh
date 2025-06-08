@@ -75,8 +75,6 @@ reflector --verbose --latest 10 --sort rate | tee -a "$LOG"
 echo "" | tee -a "$LOG"
 
 echo ">>> System check completed. Log saved to: $LOG"
-
-
 read -rsn1 -p "Press any key to continue..."
 $MENU
 
