@@ -71,12 +71,9 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             $BACKCLONRAID
             ;;
         5)
-            $EGGSINSTALL
-            ;;
-        6) 
             $BACKRESTORE
             ;;
-        7)    
+        6) 
             $CHECKSPACE
             ;;
            
