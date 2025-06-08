@@ -35,7 +35,7 @@ $LINE_SCRIPT
 echo
 
 echo -e "\033[1;34m[\033[01;37m 1\033[01;34m ]\033[00;37m - Create Backup Essecials\033m"
-echo -e "\033[1;34m[\033[01;37m 2\033[01;34m ]\033[00;37m - Create Backup Personal\033m"
+echo -e "\033[1;34m[\033[01;37m 2\033[01;34m ]\033[00;37m - Create Backup All System - rsync\033m"
 echo -e "\033[1;34m[\033[01;37m 3\033[01;34m ]\033[00;37m - Check Backup Integrity\033m"
 echo -e "\033[1;34m[\033[01;37m 4\033[01;34m ]\033[00;37m - Check Clonraid Backups\033m"
 echo -e "\033[1;34m[\033[01;37m 5\033[01;34m ]\033[00;37m - Restore Essential Backups\033m"
@@ -62,7 +62,7 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             $BACKESSENCIAL
             ;;
         2)
-            $ACKSYSTEMFOLDER
+            $BACKSYSTEMFOLDER
             ;;
         3)
             $BACKTESTINTEGRITY

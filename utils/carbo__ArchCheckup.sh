@@ -1,4 +1,24 @@
 #!/bin/bash
+#################################################################################
+# Carbonara                                                                     #
+# Script: carbo__ArchCheckup.sh                                                 #
+# Author: Apollo Alves                                                          #
+# Date  : 08/06/2025                                                            #
+#                                                                               #
+# Description:                                                                  #
+#This script performs a general check of your Arch Linux system and generates a #
+#log of the results. It identifies corrupted packages, orphaned dependencies,   #
+#manually installed AUR packages, modified files, failed services, and recent   #
+#system errors.								        #
+#									        #
+#It also displays RAID status, checks disk integrity via SMART, and tests the   #
+#speed of pacman mirrors. When finished, it saves everything to a log file and  #
+#returns to the main menu.                                                      #
+#################################################################################
+
+# Check if the user is root
+source 'carbo__verifyRoot.sh'
+MENU='/bin/carbonara.sh'
 
 LOG="$HOME/arch_checkup_$(date +%F_%H-%M-%S).log"
 
@@ -55,4 +75,8 @@ reflector --verbose --latest 10 --sort rate | tee -a "$LOG"
 echo "" | tee -a "$LOG"
 
 echo ">>> System check completed. Log saved to: $LOG"
+
+
+read -rsn1 -p "Press any key to continue..."
+$MENU
 

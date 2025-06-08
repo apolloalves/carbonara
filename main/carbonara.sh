@@ -44,6 +44,10 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 	
 	4)  carbo__EggsWizard.sh
 	    ;;
+	
+	5)  carbo__ServicesWizard.sh
+	    ;;
+	   
         *)
             echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
             sleep 2

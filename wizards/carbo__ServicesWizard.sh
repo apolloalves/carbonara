@@ -16,13 +16,13 @@ SERVICEWIZARD='/bin/carbo__ServicesWizard.sh'
 echo
 LINE_SCRIPT='/bin/carbo__LineScript.sh'
 
-echo -e "\033[1;97;100m        Carbonara          \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        Services Wizard        \033[0m"
+echo -e "\033[1;97;100m        Carbonara          \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;44m        Services Wizard        \033[0m"
 echo
 echo -e "\033[01;97m Input an option from the menu: \033[0m"
 $LINE_SCRIPT
 echo
-echo -e "\033[01;32m[\033[01;37m 01\033[01;32m ]\033[00;37m - View Services Disabled\033m"
-echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m  - Exit\033m"
+echo -e "\033[1;34m[\033[01;37m 01\033[01;34m ]\033[00;37m - View Services Disabled\033m"
+echo -e "\033[1;34m[\033[01;37m E\033[01;34m ]\033[00;37m  - Exit\033m"
 echo
 $LINE_SCRIPT
 

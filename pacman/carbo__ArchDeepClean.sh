@@ -1,11 +1,13 @@
 #!/bin/bash
 # Check if the user is root
 source 'carbo__verifyRoot.sh'
+MENU='/bin/carbonara.sh'
 
 # Function to print status
 print_status() {
     if [ "$?" -eq 0 ]; then
         printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n\n"
+        sleep 2
     else
         printf "[ \033[01;31mFAILED\033[01;37m ]\n\n"
     fi
@@ -15,6 +17,7 @@ clear
 echo
 echo "FULL SYSTEM CLEAN-UP - ARCH LINUX"
 echo "-------------------------------------------"
+echo
 
 # -------------------------
 # 0. Clean broken or partial pacman cache files
@@ -87,6 +90,8 @@ else
 fi
 echo
 print_status
+
+
 # 5. Clean Brave browser cache
 echo "Cleaning Brave browser cache..."
 echo "-------------------------------------------"
@@ -96,4 +101,17 @@ rm -rf ~/.cache/BraveSoftware/Brave-Browser/Default/GPUCache/*
 rm -rf ~/.config/B
 
 print_status
+
+# 6. clipboard / trash / recent 
+echo "Clearing the contents of the clipboard, trash files and recents list..."
+echo "-----------------------------------------------------------------------"
+xsel --clipboard --clear;sudo trash-empty --all -f;rm -rf /home/*/.local/share/recently-used.xbel;
+
+print_status
+
+read -rsn1 -p "Press any key to continue..."
+$MENU
+
+
+
 
