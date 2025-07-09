@@ -25,11 +25,8 @@ echo -e "\033[1;36m[\033[0m 2\033[1;36m ]\033[0m Deep Clean Arch Linux"
 echo -e "\033[1;36m[\033[0m 3\033[1;36m ]\033[0m Backup Wizard"
 echo -e "\033[1;36m[\033[0m 4\033[1;36m ]\033[0m Penguin's Eggs Wizard"
 echo -e "\033[1;36m[\033[0m 5\033[1;36m ]\033[0m Services Wizard"
-
-#echo -e "\033[1;36m[\033[0m 06\033[1;36m ]\033[0m Boot messages wizard ( journalctl -b )"
-#echo -e "\033[1;36m[\033[0m 03\033[1;36m ]\033[0m Search for updated packages by date"
-#echo -e "\033[1;36m[\033[0m 08\033[1;36m ]\033[0m Report"
-#echo -e "\033[1;36m[\033[0m 10\033[1;36m ]\033[0m Soft Reboot System"
+echo -e "\033[1;36m[\033[0m 6\033[1;36m ]\033[0m Report"
+echo -e "\033[1;36m[\033[0m 7\033[1;36m ]\033[0m Soft Reboot System"
 echo -e "\033[1;36m[\033[0m E\033[1;36m ]\033[0m EXIT\n"
 
 

@@ -10,8 +10,8 @@
 source 'carbo__verifyRoot.sh'
 
 MENU='/bin/carbonara.sh'
-DESTINOROOT="/bak"
-DESTINOEMERGENCY="/mnt/BACK_EMERGENCY/bak"
+DESTINOROOT="/bak/"
+DESTINOEMERGENCY="/mnt/MDSATA/"
 
 
 clear
@@ -50,7 +50,7 @@ backup_files=(
 
 for DEST_BAK in "$DESTINOROOT" "$DESTINOEMERGENCY"; do
     echo -e "\n\033[1;36mBackup para $DEST_BAK\033[0m"
-    rsync -aAXHh "${backup_files[@]}" "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log &
+    rsync -aAXHhv "${backup_files[@]}" "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log &
     RSYNC_PID=$!
     spinner $RSYNC_PID
     wait $RSYNC_PID
@@ -58,9 +58,11 @@ done
 
 echo -e "\n\033[1;32mBackup files essenciais concluído para ambos os destinos.\033[0m\n"
 
-echo -e "\nAbrindo logs...\n"
-sleep 2
-sudo kgx --tab -e "cat /var/log/backupEssencials.log" >/dev/null 2>&1
+#echo -e "\nAbrindo logs...\n"
+#sleep 2
+#sudo kgx --tab -e "cat /var/log/backupEssencials.log" >/dev/null 2>&1
 
 clear
 echo -e "\033[1;32;5mBackup Completed Successfully!\033[0m"
+echo 
+
