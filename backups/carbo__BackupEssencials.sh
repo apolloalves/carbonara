@@ -1,20 +1,27 @@
 #!/bin/bash
 #######################################################################################
 # Carbonara                                                                           #
-# Script: carbo__BackupPersonal.sh                                                    #
+# Script: carbo__BackupEssencials.sh                                                  #
 # Author: Apollo Alves                                                                #
 # Date  : 21/11/2024                                                                  #
 # Description: Executes rsync backups for essential system/user files with logs.      #
 #######################################################################################
 
-source 'carbo__verifyRoot.sh'
 
-MENU='/bin/carbonara.sh'
+
+# Ambiente gráfico para notify-send funcionar via cron
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u apollo)/bus"
+
+
+source '/bin/carbo__verifyRoot.sh'
+
+
 DESTINOROOT="/bak/"
-DESTINOEMERGENCY="/mnt/MDSATA/"
+DESTINOEMERGENCY="/mnt/MDSATA/ESSENCIALS/"
 
 
-clear
+#clear
 
 # Função spinner sincronizado com o processo
 spinner() {
@@ -29,13 +36,20 @@ spinner() {
     done
 }
 
-### BACKUP ESSENCIAL
-echo -e "\n\033[1;33mEXECUTING BACKUP FILES ESSENCIALS FOLDER\033[0m"
+
+NotifySend() {
+
+    local SOUND="/usr/share/sounds/freedesktop/stereo/service-logout.oga"
+    sudo -u apollo DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus" \
+        paplay "$SOUND" 2>/dev/null || true
+    sudo -u apollo DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus" \
+        notify-send -i dialog-information "Backup Essencials" "Concluído com sucesso!" 2>/dev/null || true
+}
+
+
 
 backup_files=(
     /boot/grub/grub.cfg
-    "/home/apollo/.bashrc"
-    "/home/apollo/.bash_profile"
     /etc/fstab
     /etc/pacman.conf
     /etc/pacman.d/mirrorlist
@@ -43,26 +57,28 @@ backup_files=(
     /etc/mkinitcpio.conf
     /etc/pipewire/pipewire.conf
     /etc/pipewire/pipewire-pulse.conf
-    /etc/pipewire/media-session.d/*
+    /home/apollo/.bashrc
+    /home/apollo/.bash_profile
     /home/apollo/.config/pipewire/pipewire.conf
     /home/apollo/.config/pipewire/pipewire-pulse.conf
 )
 
+# Inclui arquivos do media-session.d, se houver
+if [[ -d /etc/pipewire/media-session.d ]]; then
+    for file in /etc/pipewire/media-session.d/*; do
+        [[ -e "$file" ]] && backup_files+=("$file")
+    done
+fi
+
+wait
+
 for DEST_BAK in "$DESTINOROOT" "$DESTINOEMERGENCY"; do
-    echo -e "\n\033[1;36mBackup para $DEST_BAK\033[0m"
-    rsync -aAXHhv "${backup_files[@]}" "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log &
-    RSYNC_PID=$!
-    spinner $RSYNC_PID
-    wait $RSYNC_PID
+   
+rsync -aAXHv --ignore-missing-args --log-file=/var/log/rsync.carbo.log "${backup_files[@]}" "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log
+
+  
 done
 
-echo -e "\n\033[1;32mBackup files essenciais concluído para ambos os destinos.\033[0m\n"
-
-#echo -e "\nAbrindo logs...\n"
-#sleep 2
-#sudo kgx --tab -e "cat /var/log/backupEssencials.log" >/dev/null 2>&1
-
-clear
-echo -e "\033[1;32;5mBackup Completed Successfully!\033[0m"
-echo 
-
+echo "$(date) - Backup critical concluído para ambos os destinos | /bak | /mnt/MDSATA/ESSENCIALS"
+NotifySend
+ 
