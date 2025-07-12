@@ -49,7 +49,10 @@ NotifySend() {
 
 
 backup_files=(
+     
+    /root/.bashrc
     /boot/grub/grub.cfg
+    /etc/default/grub
     /etc/fstab
     /etc/pacman.conf
     /etc/pacman.d/mirrorlist
@@ -74,7 +77,7 @@ wait
 
 for DEST_BAK in "$DESTINOROOT" "$DESTINOEMERGENCY"; do
    
-rsync -aAXHv --ignore-missing-args --log-file=/var/log/rsync.carbo.log "${backup_files[@]}" "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log
+rsync -aAXHRv --ignore-missing-args --log-file=/var/log/rsync.carbo.log "${backup_files[@]}" "$DEST_BAK/" >> /var/log/backupEssencials.log 2>> /var/log/backupEssencials.error.log
 
   
 done
